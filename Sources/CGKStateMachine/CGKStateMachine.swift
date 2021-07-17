@@ -2,7 +2,7 @@ import Combine
 import GameplayKit
 
 /// A custom `GKStateMachine` that publishes `GKState` changes.
-public class CGKStateMachine: GKStateMachine, StatePublishing {
+open class CGKStateMachine: GKStateMachine, StatePublishing {
     
     // MARK: - Public Properties
 
