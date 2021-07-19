@@ -35,6 +35,22 @@ cgkStateMachine.enter(FirstState.self)
 cgkStateMachine.enter(SecondState.self)
 
 ```
+## Notice
+Apple implemented a `publisher(for:)` on `NSObject`.  
+This publisher allows for subscribing to KVO changes on classes that inherit from `NSObject`.
+
+`GKStateMachine` inherits from `NSObject`.  
+So in theory one could try using:
+
+```swift
+gkStateMachine.publisher(for: \.currentState).sink { state in
+    ...
+}
+```
+... however it doesn't seem that `GKStateMachine` is KVO-compliant.  
+In my experience, with the above approach only the first state gets published.  
+
+That's why `CGKStateMachine` was created.
 
 ## Integration
 ### Xcode
